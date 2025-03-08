@@ -13,6 +13,7 @@ interface PriceCardProps {
   buttonText?: string;
   onButtonClick?: () => void;
   currency?: string;
+  disabled?: boolean;
 }
 
 export function PriceCard({
@@ -25,11 +26,12 @@ export function PriceCard({
   buttonText = "Começar",
   onButtonClick,
   currency = "R$",
+  disabled = false,
 }: PriceCardProps) {
   return (
     <Card
       className={clsx(`flex flex-col p-6 rounded-lg`, {
-        "border-2 border-primary bg-input": popular,
+        "border-2 border-primary": popular,
       })}
     >
       <div className="mb-6">
@@ -49,6 +51,7 @@ export function PriceCard({
 
       <Button
         onClick={onButtonClick}
+        disabled={disabled}
         className={clsx("w-full mb-6", {
           "border-primary": !popular,
         })}
